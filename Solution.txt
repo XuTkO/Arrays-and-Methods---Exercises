@@ -2,23 +2,20 @@ import java.util.Scanner;
 
 public  class Main {
     public static void main (String[] args) {
-
-        Name();
-
-    }
-
-    private static void Name() {
         Scanner scanner = new Scanner(System.in);
-        String firstName = scanner.nextLine();
+        int firstNumber = Integer.parseInt(scanner.nextLine());
+        int secondNumber = Integer.parseInt(scanner.nextLine());
+        int thirdNumber = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Hello, " + firstName+"!");
-
+        GetMin(firstNumber,secondNumber,thirdNumber);
+    }
+    static void GetMin(int a, int b, int c) {
+        if (a<b && a<c ){
+            System.out.println(a);
+        } else if (b<a && b<c){
+            System.out.println(b);
+        } else if (c < a && c < b){
+            System.out.println(c);
+        }
     }
 }
-
-
-
-
-
-
-
