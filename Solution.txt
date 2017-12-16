@@ -1,21 +1,21 @@
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.Scanner;
 
 public  class Main {
     public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int firstNumber = Integer.parseInt(scanner.nextLine());
-        int secondNumber = Integer.parseInt(scanner.nextLine());
-        int thirdNumber = Integer.parseInt(scanner.nextLine());
+        String text = scanner.nextLine();
+        int num = Integer.parseInt(scanner.nextLine());
 
-        GetMin(firstNumber,secondNumber,thirdNumber);
+
+        RepeatString(text,num);
     }
-    static void GetMin(int a, int b, int c) {
-        if (a<b && a<c ){
-            System.out.println(a);
-        } else if (b<a && b<c){
-            System.out.println(b);
-        } else if (c < a && c < b){
-            System.out.println(c);
+    static void RepeatString(String text, int num){
+    String textToRepeat = "";
+        for (int i=1; i<=num; i++){
+            textToRepeat=textToRepeat+text;
         }
+        System.out.println(textToRepeat);
     }
 }
