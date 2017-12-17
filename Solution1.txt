@@ -1,0 +1,21 @@
+import com.sun.org.apache.regexp.internal.RE;
+
+import java.util.Scanner;
+
+public  class Main {
+    public static void main (String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
+        int num = Integer.parseInt(scanner.nextLine());
+
+
+        RepeatString(text,num);
+    }
+    static void RepeatString(String text, int num){
+    String textToRepeat = "";
+        for (int i=1; i<=num; i++){
+            textToRepeat=textToRepeat+text;
+        }
+        System.out.println(textToRepeat);
+    }
+}
