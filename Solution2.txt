@@ -1,0 +1,23 @@
+Решение, което работи, но не го приема judge
+
+import java.util.Scanner;
+public  class Main {
+    public static void main (String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = Integer.parseInt(scanner.nextLine());
+        int index = Integer.parseInt(scanner.nextLine());
+        String converted = IntegerToBase(num, index);
+        System.out.println(converted);
+
+    }
+
+    static String IntegerToBase(long number, int toBase) {
+        String result ="";
+        long number2 = number%toBase;
+        number/=toBase;
+        String number1=Long.toString(number);
+        result=number1+number2;
+        
+        return result;
+    }
+}
