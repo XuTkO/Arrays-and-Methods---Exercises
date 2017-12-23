@@ -2,21 +2,19 @@ import java.util.Scanner;
 public  class Main {
     public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
-        long num = Long.parseLong(scanner.nextLine());
+        int num = Integer.parseInt(scanner.nextLine());
         int index = Integer.parseInt(scanner.nextLine());
-        int digitAtIndex = FindNthDigit(num,index);
-        System.out.println(digitAtIndex);
+        String converted = IntegerToBase(num, index);
+        System.out.println(converted);
     }
-    static int FindNthDigit(long number1, int index1) {
-        int currentindex = 1;
-        while (number1 > 0) {
-            for (int i = 1; i <= index1; i++) {
-                if (currentindex == index1) {
-                    return (int) (number1 % 10);
-                }
-                currentindex++;
-                number1 /= 10;
-            }
-        }return (int) number1;
+
+    static String IntegerToBase(long number, int toBase) {
+        String result = "";
+        while (number>0) {
+            long remainder = number % toBase;
+            result = (String) (remainder + result);
+            number /= toBase;
+        }
+        return result;
     }
 }
