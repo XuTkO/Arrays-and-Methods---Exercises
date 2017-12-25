@@ -1,20 +1,45 @@
 import java.util.Scanner;
 public  class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int num = Integer.parseInt(scanner.nextLine());
-        int index = Integer.parseInt(scanner.nextLine());
-        String converted = IntegerToBase(num, index);
-        System.out.println(converted);
+        int N = Integer.parseInt(scanner.nextLine());
+        String word = "";
+        for (int i = 1; i <=N; i++) {
+            char character = scanner.nextLine().charAt(0);
+            word+=Encrypt(character);
+        }
+        System.out.println(word);
     }
 
-    static String IntegerToBase(long number, int toBase) {
-        String result = "";
-        while (number>0) {
-            long remainder = number % toBase;
-            result = (String) (remainder + result);
-            number /= toBase;
+    static String Encrypt(char letter) {
+        char word = ' ';
+        String finalWord = "";
+        int asciiNumberofLetter = 0;
+        asciiNumberofLetter = letter;
+        int numbers = 0;
+        if (letter > 99) {
+            numbers = asciiNumberofLetter % 10;
+            finalWord += Integer.toString(numbers);
+            asciiNumberofLetter = asciiNumberofLetter / 10;
+            word = (char) (letter + numbers);
+            numbers = asciiNumberofLetter/10;
+            finalWord = Integer.toString(numbers) + finalWord;
+
+            finalWord = Character.toString(word)+finalWord;
+            word = (char) (letter - asciiNumberofLetter / 10);
+            finalWord += Character.toString(word);
+        } else {
+            numbers = asciiNumberofLetter % 10;
+            word = (char) (letter + numbers);
+            finalWord = Character.toString(word);
+            numbers = asciiNumberofLetter;
+            asciiNumberofLetter = asciiNumberofLetter / 10;
+            finalWord += Integer.toString(numbers);
+            word = (char) (letter - asciiNumberofLetter);
+            finalWord += Character.toString(word);
         }
-        return result;
+        return finalWord;
+
     }
+
 }
