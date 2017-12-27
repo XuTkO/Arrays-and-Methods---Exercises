@@ -12,34 +12,20 @@ public  class Main {
     }
 
     static String Encrypt(char letter) {
-        char word = ' ';
+       int asciiCode= (int)letter;
         String finalWord = "";
-        int asciiNumberofLetter = 0;
-        asciiNumberofLetter = letter;
-        int numbers = 0;
-        if (letter > 99) {
-            numbers = asciiNumberofLetter % 10;
-            finalWord += Integer.toString(numbers);
-            asciiNumberofLetter = asciiNumberofLetter / 10;
-            word = (char) (letter + numbers);
-            numbers = asciiNumberofLetter/10;
-            finalWord = Integer.toString(numbers) + finalWord;
-
-            finalWord = Character.toString(word)+finalWord;
-            word = (char) (letter - asciiNumberofLetter / 10);
-            finalWord += Character.toString(word);
-        } else {
-            numbers = asciiNumberofLetter % 10;
-            word = (char) (letter + numbers);
-            finalWord = Character.toString(word);
-            numbers = asciiNumberofLetter;
-            asciiNumberofLetter = asciiNumberofLetter / 10;
-            finalWord += Integer.toString(numbers);
-            word = (char) (letter - asciiNumberofLetter);
-            finalWord += Character.toString(word);
-        }
+        int secondDigit = asciiCode%10;
+        int firstDigit = GetForstDogot(asciiCode);
+        char firstLetter = (char)(letter+secondDigit);
+        char lastLetter = (char)(letter-firstDigit);
+        finalWord =firstLetter+Integer.toString(firstDigit)+secondDigit+lastLetter;
         return finalWord;
-
     }
 
+    static int GetForstDogot(int asciiCode) {
+        while(asciiCode>=10){
+            asciiCode/= 10;
+        }
+        return  asciiCode;
+    }
 }
